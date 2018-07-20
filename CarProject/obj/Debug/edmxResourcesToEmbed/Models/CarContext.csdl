@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarDataBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Brand">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Models" Relationship="Self.FK_Models_toBrands" FromRole="Brands" ToRole="Models" />
+  </EntityType>
+  <EntityType Name="Model">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ModelsName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BrandsId" Type="Int32" />
+    <NavigationProperty Name="Brand" Relationship="Self.FK_Models_toBrands" FromRole="Models" ToRole="Brands" />
+    <NavigationProperty Name="Parts" Relationship="Self.FK_Parts_toModels" FromRole="Models" ToRole="Parts" />
+  </EntityType>
+  <EntityType Name="Part">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PartsName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModelsId" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="Model" Relationship="Self.FK_Parts_toModels" FromRole="Parts" ToRole="Models" />
+  </EntityType>
+  <Association Name="FK_Models_toBrands">
+    <End Role="Brands" Type="Self.Brand" Multiplicity="0..1" />
+    <End Role="Models" Type="Self.Model" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brands">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Models">
+        <PropertyRef Name="BrandsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Parts_toModels">
+    <End Role="Models" Type="Self.Model" Multiplicity="0..1" />
+    <End Role="Parts" Type="Self.Part" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Models">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Parts">
+        <PropertyRef Name="ModelsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CarDataBaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Brands" EntityType="Self.Brand" />
+    <EntitySet Name="Models" EntityType="Self.Model" />
+    <EntitySet Name="Parts" EntityType="Self.Part" />
+    <AssociationSet Name="FK_Models_toBrands" Association="Self.FK_Models_toBrands">
+      <End Role="Brands" EntitySet="Brands" />
+      <End Role="Models" EntitySet="Models" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parts_toModels" Association="Self.FK_Parts_toModels">
+      <End Role="Models" EntitySet="Models" />
+      <End Role="Parts" EntitySet="Parts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
