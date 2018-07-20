@@ -16,7 +16,18 @@ namespace CarProject.Controllers
             ViewBag.brand = Items;
             return View();
         }
-
-    
+       // [HttpGet]
+        public ActionResult Models(int id)
+        {
+            var item = db.Models.Where(p => p.BrandsId == id).ToList();
+            return View(item);
+        }
+        /*[HttpPost]
+        public ActionResult Models()
+        {
+            var Items = db.Models;
+            ViewBag.model = Items;
+            return View();
+        }*/
     }
 }

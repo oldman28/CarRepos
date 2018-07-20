@@ -1,0 +1,35 @@
+﻿@model List<CarProject.Models.Model>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Models</title>
+</head>
+<body>
+    <div> 
+        <h3>Список моделей</h3>
+        <form method="post" action="">
+            <table>
+                <tr>
+                    <td><p>Модель</p></td>
+                    <td><p>Марка</p></td>
+                </tr>
+
+                @foreach (var b in Model)
+                {
+                    <tr>
+                        <td><p>@b.ModelsName</p></td>
+                        <td><p>@b.Brand.Name</p></td>
+                    </tr>
+                }
+
+            </table>
+        </form>
+</div>
+</body>
+</html>
