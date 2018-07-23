@@ -76,3 +76,9 @@ C:\Users\Риваль\Documents\GitHub\1\CarRepo\CarProject\bin\ru\System.Web.We
 C:\Users\Риваль\Documents\GitHub\1\CarRepo\CarProject\obj\Debug\CarProject.csprojResolveAssemblyReference.cache
 C:\Users\Риваль\Documents\GitHub\1\CarRepo\CarProject\obj\Debug\CarProject.dll
 C:\Users\Риваль\Documents\GitHub\1\CarRepo\CarProject\obj\Debug\CarProject.pdb
+C:\Users\Риваль\Documents\GitHub\1\CarRepo\CarProject\bin\System.Net.Http.Formatting.dll
+C:\Users\Риваль\Documents\GitHub\1\CarRepo\CarProject\bin\System.Web.Http.dll
+C:\Users\Риваль\Documents\GitHub\1\CarRepo\CarProject\bin\System.Web.Http.WebHost.dll
+C:\Users\Риваль\Documents\GitHub\1\CarRepo\CarProject\bin\System.Net.Http.Formatting.xml
+C:\Users\Риваль\Documents\GitHub\1\CarRepo\CarProject\bin\System.Web.Http.xml
+C:\Users\Риваль\Documents\GitHub\1\CarRepo\CarProject\bin\System.Web.Http.WebHost.xml
